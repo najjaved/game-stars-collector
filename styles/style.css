@@ -8,11 +8,12 @@ body {
   padding: 40px 0px;
 }
 
+
 #game-container {
   display: flex;
   gap: 50px;
   width: 100vw;
-  padding: 20px 0px;
+  padding: 40px 0px;
   justify-content: center;
 }
 

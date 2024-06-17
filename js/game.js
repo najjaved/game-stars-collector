@@ -1,136 +1,127 @@
-const star = document.getElementById('star')
-const basket = document.getElementById('basket')
-const scoreDisplay = document.getElementById('score')
-
-  const screenWidth = 500
-  const screenHeight = 800
-  const starDiameter = 30
-  const basketWidth = 100
-  const basketHeight = 50  
-
-  let score = 0
-  let gameOver = false
-
-  let starX = 0
-  let starY = 0
-  let starDirectionY = 2 // move in downwards with double the speed
-
-  let basketX = 0
-  let basketDirectionX = 0 // initial position, not moving
-
-
+// Select DOM elements
+const star = document.getElementById('star');
+const basket = document.getElementById('basket');
+const scoreDisplay = document.getElementById('score');
+const livesDisplay = document.getElementById('lives');
+ 
 
 
 class Game {
   constructor() {
-    this.startScreen = document.querySelector('#game-intro')
-    this.gameScreen = document.querySelector('#game-screen')
-    this.endScreen = document.querySelector('#game-end')
-    this.width = 500
-    this.height = 800
+    this.startScreen = document.querySelector('#game-intro');
+    this.gameScreen = document.querySelector('#game-screen');
+    this.endScreen = document.querySelector('#game-end');
 
-    this.player
+    
+    this.screenWidth = 500;
+    this.screenHeight = 800;
+    this.starDiameter = 30;
+    this.basketWidth = 100;
+    this.basketHeight = 50;
 
-    this.currentFrame = 0
-    this.lives = 3
-    this.gameOver = false
+    
+    this.starX = 0;
+    this.starY = 0;
+    this.starDirectionY = 1; // move in downwards with double the speed
+    this.starSpeed = 3;
+
+    this.basketX = 0;
+    this.basketDirectionX = 0; // initial position, not moving
+    this.basketSpeed = 2;
+
+    
+    this.score = 0;
+    this.lives = 3;
+    this.gameOver = false;
   } 
 
   start() {
-    this.gameScreen.style.width = `${this.width}px`
-    this.gameScreen.style.height = `${this.height}px`
+    this.gameScreen.style.width = `${this.screenWidth}px`;
+    this.gameScreen.style.height = `${this.screenHeight}px`;
 
-    this.startScreen.style.display = 'none'
-    this.gameScreen.style.display = 'block'
-    this.endScreen.style.display = 'none'
+    this.startScreen.style.display = 'none';
+    this.gameScreen.style.display = 'block';
+    this.endScreen.style.display = 'none';
 
 
     const renderStar = () => {
+      this.starX = Math.random() * (this.screenWidth - this.starDiameter) + 1
 
       // star to catch taking into accout basket height, get score..other part where its a loss, full screen height - star height and game over. For catch the stars, inverse logic
       if (
-        starY > screenHeight - starDiameter - basketHeight &&
-        starX > basketX &&
-        starX < basketX + basketWidth
+        this.starY > this.screenHeight - this.starDiameter - this.basketHeight &&
+        this.starX > this.basketX &&
+        this.starX < this.basketX + this.basketWidth
       ) {
-        score += 10
-        if (score > 50) {
-          starDirectionY *= 1.1 // increase stars speed with increaing score, or change size of stars
+        this.score += 10;
+        if (this.score > 50) {
+          this.starDirectionY *= 1.1; // increase stars speed with increaing score, or change size of stars
   
         }
         
-        if (score >= 100) {
-          gameOver = true
+        if (this.score >= 100) {
+          this.gameOver = true;
+          console.log('You won!');
+
         }
       }
   
-      else if ( starY > screenHeight - starDiameter - basketHeight) {
-        gameOver = true
+      else if ( this.starY >= this.screenHeight - this.starDiameter) {
+        this.lives -=1;
+        livesDisplay.innerText = this.lives;
+        if (lives<0) {
+          this.gameOver = true;
+        }
+        
       }
   
-      starY += starDirectionY
-      star.style.left = `${starX}px` /* modify css property(left) of star to give impression of movement */
-      star.style.top = `${starY}px`
+      this.starY += this.starDirectionY;
+      star.style.left = `${this.starX}px`; 
+      star.style.top = `${this.starY}px`; /* modify css property(top) of star to give impression of falling */
     }
   
+
     const renderBasket = () => {
-      basketX += basketDirectionX // control basket direction & speed
+      this.basketX += this.basketDirectionX * this.basketSpeed; // control basket direction & speed
   
       // check for bounds
-      if (basketX < 0) {
-        basketX = 0
+      if (this.basketX < 0) {
+        this.basketX = 0;
       }
-      if (basketX > screenWidth - basketWidth) {
-        basketX = screenWidth - basketWidth
+      if (this.basketX > this.screenWidth - this.basketWidth) {
+        this.basketX = this.screenWidth - this.basketWidth;
       }
   
-      basket.style.left = `${basketX}px` // every frame change its position, add eventlistener for user inputs to move it
+      basket.style.left = `${this.basketX}px`; // every frame change its position, add eventlistener for user inputs to move it
   
     }
-  
+
+    
+    
     const renderScore = () => {
-      scoreDisplay.innerText = score
+    scoreDisplay.innerText = this.score;
     }
   
+    
+    
     const intervalId = setInterval(() => {
-      renderStar()
-      renderBasket()
-      renderScore() // also render score on every iteration
+      this.currentFrame +=1;
+      renderStar();
+      renderBasket();
+      renderScore(); // also render score on every iteration
   
-      if (gameOver) {
-        console.log('gameover')
-        clearInterval(intervalId)
+      if (this.gameOver) {
+        console.log('gameover');
+        clearInterval(intervalId);
         // hide game screen
+        this.gameScreen.style.display = 'none'
         // show final screen with win/lose
+        this.endScreen.style.display = 'block'
+
+        // Cleanup DOM: TODO
+        
       }
     }, 1000 / 60)  // update frame 60 times per second
-
-      // attach eventListener to key press, feed the event to its callback function
-  document.addEventListener("keydown", (keyDownEvent) => {
-    console.log(keyDownEvent) // check properties of the event
-
-    if(keyDownEvent.code === 'KeyA' || keyDownEvent.code === 'ArrowLeft') {
-      console.log('go left!')
-      basketDirectionX = -2;
-    }
-
-    if(keyDownEvent.code === 'KeyD' || keyDownEvent.code === 'ArrowRight') {
-      console.log('go right!')
-      basketDirectionX = 2;
-    }
-  })
-
-  // attach eventListener to key release
-  document.addEventListener('keyup', keyUpEvent => {
-    if (
-      keyUpEvent.code === 'KeyA' ||
-      keyUpEvent.code === 'ArrowLeft' ||
-      keyUpEvent.code === 'KeyD' ||
-      keyUpEvent.code === 'ArrowRight'
-    ) {
-      basketDirectionX = 0
-    }
-  })
 
   }
 }
