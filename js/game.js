@@ -1,5 +1,3 @@
-// Select DOM elements
-const star = document.getElementById('star');
 const basket = document.getElementById('basket');
 const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives');
@@ -20,19 +18,23 @@ class Game {
     this.basketHeight = 50;
 
     
-    this.starX = 0;
+    this.starX = 3;
     this.starY = 0;
     this.starDirectionY = 1; // move in downwards with double the speed
-    this.starSpeed = 3;
+    this.starSpeed = 1;
 
     this.basketX = 0;
     this.basketDirectionX = 0; // initial position, not moving
-    this.basketSpeed = 2;
+    this.basketSpeed = 4;
 
     
     this.score = 0;
     this.lives = 3;
     this.gameOver = false;
+    this.framesCounter = 0;
+    this.starsCounter = 0;
+    this.starsArray =[];
+    
   } 
 
   start() {
@@ -42,10 +44,156 @@ class Game {
     this.startScreen.style.display = 'none';
     this.gameScreen.style.display = 'block';
     this.endScreen.style.display = 'none';
+    
+    const generateX = () =>{
+      let xCoordinate = Math.floor(Math.random()*10);
+      return xCoordinate * 50;
+    }
+
+    const speedFactor = () => {
+      if(this.score < 50) {
+        return this.starSpeed;
+      } else if(this.score >= 50) {
+        let speedUp = 2.0;
+        return this.starSpeed + this.score / 200 * speedUp;
+      }
+    }
+
+    const renderStars = () => {
+      for(let i =0; i<this.starsArray.length; i+=1) {
+        let aStar = this.starsArray[i]; 
+        const oldY = parseInt(aStar.style.top);
+        const newY = oldY + 2 * speedFactor(); 
+        aStar.style.top = `${newY}px`;
+      }
+      this.framesCounter +=1;
+      // create star every second
+      if (this.framesCounter % 180 ===0){
+        this.starsArray.push(createStar());
+      }
+    }
 
 
+    const createStar = () => {
+      const newStar = document.createElement('div');
+      newStar.setAttribute('id', 'newStar'+ this.starsCounter);
+      newStar.setAttribute('class', 'star');
+      this.gameScreen.appendChild(newStar); 
+      newStar.style.left = `${generateX()}px`; 
+      newStar.style.top = '0px'; 
+      this.starsCounter+=1;
+
+     return newStar;
+    }
+
+    const renderBasket = () => {
+      this.basketX += this.basketDirectionX * this.basketSpeed; // control basket direction & speed
+  
+      // check for bounds
+      if (this.basketX < 0) {
+        this.basketX = 0;
+      }
+      if (this.basketX > this.screenWidth - this.basketWidth) {
+        this.basketX = this.screenWidth - this.basketWidth;
+      }
+  
+      basket.style.left = `${this.basketX}px`; // every frame change its position, add eventlistener for user inputs to move it
+  
+    }
+
+    const checkBasket = () =>{
+      // star to catch taking into accout basket height, get score..other part where its a loss, full screen height - star height and game over. For catch the stars, inverse logic
+      for(let i =0; i<this.starsArray.length; i+=1) {
+        let aStar = this.starsArray[i]; 
+        let starY = parseInt(aStar.style.top);
+        let starX = parseInt(aStar.style.left)
+        if (
+            starY > this.screenHeight - this.basketHeight &&
+            starX > this.basketX &&
+            starX < this.basketX + this.basketWidth
+          ) {
+            this.score += 10;
+          }
+        else if(starY > this.screenHeight -this.basketHeight) {
+          this.lives -=1;
+          livesDisplay.innerText = this.lives;
+
+          }
+        }
+      }
+
+
+    const removeStars = () =>{
+      const starsToKeep = this.starsArray.filter((star) => parseInt(star.style.top) <= (this.screenHeight - this.basketHeight));
+      const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - this.basketHeight));
+      this.starsArray = [...starsToKeep];
+      for(let i = 0; i < starsToRemove.length; i++) {
+        starsToRemove[i].remove();
+      }
+
+    }
+    
+   
+
+    const checkWinLose = () => {
+      if (this.score >= 100) {
+        this.gameOver = true;
+        console.log('You won!');
+  
+      }
+
+      if (this.lives<0) {
+        this.gameOver = true;
+      }
+
+      else if ( this.starY >= this.screenHeight - this.starDiameter) {
+        this.lives -=1;
+        livesDisplay.innerText = this.lives;
+        if (this.lives<0) {
+          this.gameOver = true;
+        }
+        
+      }
+
+    }
+    
+    
+    const renderScore = () => {
+    scoreDisplay.innerText = this.score;
+    }
+  
+    
+    
+    const intervalId = setInterval(() => {
+      this.currentFrame +=1;
+      renderStars();
+      renderBasket();
+      checkBasket();
+      renderScore(); // also render score on every iteration
+      checkWinLose();
+      removeStars();
+      
+
+      if (this.gameOver) {
+        console.log('gameover');
+        clearInterval(intervalId);
+        // hide game screen
+        this.gameScreen.style.display = 'none'
+        // show final screen with win/lose
+        this.endScreen.style.display = 'block'
+
+        // Cleanup DOM: TODO
+        
+      }
+    }, 1000 / 60)      // update frame 60 times per second
+
+
+}
+
+      /*
     const renderStar = () => {
-      this.starX = Math.random() * (this.screenWidth - this.starDiameter) + 1
+      //this.starX +=2; //Math.random() * (this.screenWidth - this.starDiameter);
+      this.starY +=2;
 
       // star to catch taking into accout basket height, get score..other part where its a loss, full screen height - star height and game over. For catch the stars, inverse logic
       if (
@@ -55,7 +203,7 @@ class Game {
       ) {
         this.score += 10;
         if (this.score > 50) {
-          this.starDirectionY *= 1.1; // increase stars speed with increaing score, or change size of stars
+          this.starDirectionY *= 1.1; // increase stars speed with increasing score, or change size of stars
   
         }
         
@@ -75,53 +223,10 @@ class Game {
         
       }
   
-      this.starY += this.starDirectionY;
+      //this.starY += this.starDirectionY;
       star.style.left = `${this.starX}px`; 
       star.style.top = `${this.starY}px`; /* modify css property(top) of star to give impression of falling */
-    }
-  
 
-    const renderBasket = () => {
-      this.basketX += this.basketDirectionX * this.basketSpeed; // control basket direction & speed
-  
-      // check for bounds
-      if (this.basketX < 0) {
-        this.basketX = 0;
-      }
-      if (this.basketX > this.screenWidth - this.basketWidth) {
-        this.basketX = this.screenWidth - this.basketWidth;
-      }
-  
-      basket.style.left = `${this.basketX}px`; // every frame change its position, add eventlistener for user inputs to move it
-  
-    }
+} 
 
-    
-    
-    const renderScore = () => {
-    scoreDisplay.innerText = this.score;
-    }
-  
-    
-    
-    const intervalId = setInterval(() => {
-      this.currentFrame +=1;
-      renderStar();
-      renderBasket();
-      renderScore(); // also render score on every iteration
-  
-      if (this.gameOver) {
-        console.log('gameover');
-        clearInterval(intervalId);
-        // hide game screen
-        this.gameScreen.style.display = 'none'
-        // show final screen with win/lose
-        this.endScreen.style.display = 'block'
-
-        // Cleanup DOM: TODO
-        
-      }
-    }, 1000 / 60)  // update frame 60 times per second
-
-  }
-}
+ 
