@@ -44,6 +44,8 @@ class Game {
     this.startScreen.style.display = 'none';
     this.gameScreen.style.display = 'block';
     this.endScreen.style.display = 'none';
+
+    this.lives= 3; // reset lives
     
     const generateX = () =>{
       let xCoordinate = Math.floor(Math.random()*10);
@@ -136,19 +138,19 @@ class Game {
    
 
     const checkWinLose = () => {
-      if (this.score >= 100) {
+      if (this.score >= 200) {
         this.gameOver = true;
         console.log('You won!');
   
       }
 
-      if (this.lives<0) {
+      if (this.lives === 0) {
         this.gameOver = true;
       }
 
       else if ( this.starY >= this.screenHeight - this.starDiameter) {
         this.lives -=1;
-        livesDisplay.innerText = this.lives;
+        //livesDisplay.innerText = this.lives;
         if (this.lives<0) {
           this.gameOver = true;
         }
@@ -161,6 +163,10 @@ class Game {
     const renderScore = () => {
     scoreDisplay.innerText = this.score;
     }
+
+    const renderLives = () => {
+      livesDisplay.innerText = this.lives;
+      }
   
     
     
@@ -168,9 +174,10 @@ class Game {
       this.currentFrame +=1;
       renderStars();
       renderBasket();
+      renderLives();
       checkBasket();
+      checkWinLose(); 
       renderScore(); // also render score on every iteration
-      checkWinLose();
       removeStars();
       
 
@@ -187,10 +194,11 @@ class Game {
       }
     }, 1000 / 60)      // update frame 60 times per second
 
-
 }
 
-      /*
+
+
+/*
     const renderStar = () => {
       //this.starX +=2; //Math.random() * (this.screenWidth - this.starDiameter);
       this.starY +=2;
