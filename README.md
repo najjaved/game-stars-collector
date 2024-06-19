@@ -46,7 +46,7 @@ MVP definition here
 # Tasks
 List of tasks in order of priority
 
-# Proyect Structure
+# Project Structure
 
 ## main.js
 
