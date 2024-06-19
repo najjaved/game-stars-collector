@@ -23,4 +23,5 @@ Links
 Trello Link
 Slides Link
 Github repository Link
-Deployment Link
+Deployment Link:
+https://najjaved.github.io/game-stars-collector/

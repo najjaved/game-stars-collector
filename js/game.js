@@ -1,6 +1,7 @@
 const basket = document.getElementById('basket');
 const scoreDisplay = document.getElementById('score');
-const livesDisplay = document.getElementById('lives');
+const livesDisplay = document.getElementById('lives'); 
+const messageDisplay = document.getElementById('end-msg');
  
 
 
@@ -13,7 +14,7 @@ class Game {
     
     this.screenWidth = 500;
     this.screenHeight = 800;
-    this.starDiameter = 30;
+    this.starDiameter = 50;
     this.basketWidth = 100;
     this.basketHeight = 50;
 
@@ -48,8 +49,8 @@ class Game {
     this.lives= 3; // reset lives
     
     const generateX = () =>{
-      let xCoordinate = Math.floor(Math.random()*10);
-      return xCoordinate * 50;
+      let xCoordinate = Math.floor(Math.random()*10) +1; // Math.floor(Math.random() * (max - min + 1)) + min  -> inclusive of both ends
+      return xCoordinate * 50; // starWidth = 50px
     }
 
     const speedFactor = () => {
@@ -109,20 +110,21 @@ class Game {
         let aStar = this.starsArray[i]; 
         let starY = parseInt(aStar.style.top);
         let starX = parseInt(aStar.style.left)
-        if (
-            starY > this.screenHeight - this.basketHeight &&
+        if (starY > this.screenHeight - this.basketHeight &&
             starX > this.basketX &&
-            starX < this.basketX + this.basketWidth
-          ) {
+            starX < this.basketX + this.basketWidth) {
             this.score += 10;
-          }
+        }
+
         else if(starY > this.screenHeight -this.basketHeight) {
           this.lives -=1;
-          livesDisplay.innerText = this.lives;
-
+          if (this.lives < 0) {
+            this.gameOver = true;
           }
         }
       }
+
+    }
 
 
     const removeStars = () =>{
@@ -140,21 +142,13 @@ class Game {
     const checkWinLose = () => {
       if (this.score >= 200) {
         this.gameOver = true;
+        messageDisplay.innerText = 'You won!'
         console.log('You won!');
   
       }
 
-      if (this.lives === 0) {
+      if (this.lives < 0) {
         this.gameOver = true;
-      }
-
-      else if ( this.starY >= this.screenHeight - this.starDiameter) {
-        this.lives -=1;
-        //livesDisplay.innerText = this.lives;
-        if (this.lives<0) {
-          this.gameOver = true;
-        }
-        
       }
 
     }
@@ -188,8 +182,13 @@ class Game {
         this.gameScreen.style.display = 'none'
         // show final screen with win/lose
         this.endScreen.style.display = 'block'
+        // hide lives on final screen: livesDisplay.style.display = 'none';
 
-        // Cleanup DOM: TODO
+        // Cleanup DOM:
+        this.starsArray.forEach((starObject) => {
+          starObject.remove();
+
+        })
         
       }
     }, 1000 / 60)      // update frame 60 times per second
