@@ -6,6 +6,7 @@ body {
 
 #game-intro {
   padding: 40px 0px;
+  overflow: hidden;
 }
 
 
@@ -15,6 +16,7 @@ body {
   width: 100vw;
   padding: 40px 0px;
   justify-content: center;
+  overflow: hidden;
 }
 
 #game-screen {
@@ -24,6 +26,7 @@ body {
   position: relative;
   background-image: url(../images/background-img.jpg);
   background-size: cover;
+  border-radius: 20px
 }
 
 .star {
@@ -35,6 +38,7 @@ body {
   background-size: cover;
   top: 0; /* can draw movement of the ball by manipulating positions based on user click event */
   left: 0;
+  border-radius: 50%;
 }
 
 
@@ -47,6 +51,8 @@ body {
   left: 150px; /* screen width/2 - paddle width/2 */ /*create variable for it in JS so that we can manipulate it */
   background-image: url(../images/basket.jfif);
   background-size: cover;
+  border-radius: 10px;
+  margin-left: 2px;
 }
 
 
@@ -73,7 +79,7 @@ body button {
   padding: 20px 40px;
   border: 0;
   box-shadow: 0;
-  border-radius: 5px;
+  border-radius: 200px;
   margin-bottom: 20px;
 }
 

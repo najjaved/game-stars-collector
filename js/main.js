@@ -21,6 +21,7 @@ window.addEventListener('load', () => {
 
   document.addEventListener('keydown', event => {
     if (event.code === 'KeyA' || event.code === 'ArrowLeft') {
+      //event.preventDefault();
       // Move to the left
       game.basketDirectionX = -1
     }

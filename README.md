@@ -20,8 +20,7 @@ Task
 List of tasks in order of priority
 
 Links
-Trello Link
+Trello Link: https://trello.com/b/IJ0mSslm/my-game-project
 Slides Link
-Github repository Link
-Deployment Link:
-https://najjaved.github.io/game-stars-collector/
+Github repository Link: https://github.com/najjaved/game-stars-collector
+Deployment Link: https://najjaved.github.io/game-stars-collector/
