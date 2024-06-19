@@ -1,11 +1,11 @@
-![Game Logo](https://user-images.githubusercontent.com/xx.png)
+![Game Logo](https://github.com/najjaved/game-stars-collector/blob/development/images/starsCollector.jpg)
 
 # GAME | Stars Collector
 
 ## [Play the Game!](https://najjaved.github.io/game-stars-collector/)
 
 <p align="center">
-  <img src="https://media4.giphy.com/media/ka5i65sFAlM9pbZ2OM/giphy.webp?cid=ecf05e47kr8bob2w1vfu9rrz2yztcuycdcamkebbztmp7emu&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif">
+  <img src="https://media1.giphy.com/media/OFazVPIFIYmFsXROhj/giphy.webp?cid=ecf05e47eeyw4q8enmg5y9zqj74a2umf9i6lxidwjsvt7iwg&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif" style = "border-radius:30px" >
 </p>
 
 
@@ -64,7 +64,7 @@ MVP definition here
 </details>
 
 
-## Project Structure
+# Project Structure
 ## main.js
 
 - buildDom();
@@ -155,12 +155,8 @@ MVP definition here
 - checkBasket()
 
 
-## Links 
-
+## Links:
 ### [`Trello`](https://trello.com/b/IJ0mSslm/my-game-project)
-
 ### [`Slides`](www.your-slides-url-here.com)
-
 ### [`Github repository`](https://github.com/najjaved/game-stars-collector)
-
 ### [`Deployment Link`](https://najjaved.github.io/game-stars-collector/)
