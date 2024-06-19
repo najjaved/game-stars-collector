@@ -158,11 +158,10 @@ MVP definition here
 
 ## Links 
 
-### [Trello] (https://trello.com/b/IJ0mSslm/my-game-project)
+### [`Trello`](https://trello.com/b/IJ0mSslm/my-game-project)
 
-### Slides
-[Link] (www.your-slides-url-here.com)
+### [`Slides`](www.your-slides-url-here.com)
 
 ### [`Github repository`](https://github.com/najjaved/game-stars-collector)
 
-## [Deployment Link](https://najjaved.github.io/game-stars-collector/)
+## [`Deployment Link`](https://najjaved.github.io/game-stars-collector/)
