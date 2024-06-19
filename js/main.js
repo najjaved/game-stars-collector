@@ -7,7 +7,7 @@ window.addEventListener('load', () => {
   function startGame() {
     console.log('start game');
     game = new Game();
-    game.start();
+    game.startGameLoop();
   }
 
   // eventListener to start game button

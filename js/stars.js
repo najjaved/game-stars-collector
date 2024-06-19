@@ -30,7 +30,7 @@ class Stars {
       }
     }
 
-  renderStars () {
+  renderStars() {
       for(let i =0; i<this.starsArray.length; i+=1) {
         let aStar = this.starsArray[i]; 
         const oldY = parseInt(aStar.style.top);

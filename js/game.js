@@ -31,14 +31,14 @@ class Game {
     
     this.score = 0;
     this.lives = 3;
-    this.gameOver = false;
+    this.gameIsOver = false;
     this.framesCounter = 0;
     this.starsCounter = 0;
     this.starsArray =[];
     
   } 
 
-  start() {
+  startGameLoop() {
     this.gameScreen.style.width = `${this.screenWidth}px`;
     this.gameScreen.style.height = `${this.screenHeight}px`;
 
@@ -119,7 +119,7 @@ class Game {
         else if(starY > this.screenHeight -this.basketHeight) {
           this.lives -=1;
           if (this.lives < 0) {
-            this.gameOver = true;
+            this.gameIsOver = true;
           }
         }
       }
@@ -141,14 +141,14 @@ class Game {
 
     const checkWinLose = () => {
       if (this.score >= 200) {
-        this.gameOver = true;
+        this.gameIsOver = true;
         messageDisplay.innerText = 'You won!'
         console.log('You won!');
   
       }
 
       if (this.lives < 0) {
-        this.gameOver = true;
+        this.gameIsOver = true;
       }
 
     }
@@ -175,7 +175,7 @@ class Game {
       removeStars();
       
 
-      if (this.gameOver) {
+      if (this.gameIsOver) {
         console.log('gameover');
         clearInterval(intervalId);
         // hide game screen
