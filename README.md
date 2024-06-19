@@ -5,7 +5,7 @@
 ## [Play the Game!](https://najjaved.github.io/game-stars-collector/)
 
 <p align="center">
-  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjRkankwNWQ5anl0MGN6NHl4b2dveXd1bmMybDFvMW5tOGpwMWU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C0NhnyKT89QdO/giphy.gif" width="400" alt="game start gif">
+  <img src="https://media4.giphy.com/media/ka5i65sFAlM9pbZ2OM/giphy.webp?cid=ecf05e47kr8bob2w1vfu9rrz2yztcuycdcamkebbztmp7emu&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif">
 </p>
 
 
@@ -64,8 +64,7 @@ MVP definition here
 </details>
 
 
-# Project Structure
-
+## Project Structure
 ## main.js
 
 - buildDom();
@@ -164,4 +163,4 @@ MVP definition here
 
 ### [`Github repository`](https://github.com/najjaved/game-stars-collector)
 
-## [`Deployment Link`](https://najjaved.github.io/game-stars-collector/)
+### [`Deployment Link`](https://najjaved.github.io/game-stars-collector/)
