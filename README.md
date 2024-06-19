@@ -1,24 +1,29 @@
-# Stars Collector
+![Game Logo](https://user-images.githubusercontent.com/xx.png)
+
+# GAME | Stars Collector
 
 ## [Play the Game!](https://najjaved.github.io/game-stars-collector/)
 
-![Game Logo]()
+<p align="center">
+  <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExcjRkankwNWQ5anl0MGN6NHl4b2dveXd1bmMybDFvMW5tOGpwMWU5OSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/C0NhnyKT89QdO/giphy.gif" width="400" alt="game start gif">
+</p>
 
 
-# Description
+
+## Description
 
 Brief description of the project
 
-# MVP
+## MVP
 MVP definition here
-## Main Functionalities
+### Main Functionalities
 
 - Stars fall from the sky automatically and player tries to collect them in a basket
 - Player moves basket direction by clicking `left` and `right`.
 - 
 -
 
-# Backlog Functionalities
+## Backlog Functionalities
 
 - Introduce various difficulty levels based on score, for example increasing stars speed, bonus stars, etc.
 - Responsive design using media queries
@@ -28,7 +33,7 @@ MVP definition here
 - Add animation
 
 
-# Technologies Used
+## Technologies Used
 
 - HTML
 - CSS
@@ -37,14 +42,27 @@ MVP definition here
 - JS Classes
 
 
-# States
+## States
 
 - Splash Screen
 - Game Screen
 - Game Over Screen
 
-# Tasks
-List of tasks in order of priority
+<details>
+  <summary>
+   <h2>Tasks</h2>
+  </summary>
+
+ List of tasks in order of priority: 
+
+  - nfmfdsndd mfs 
+  - ...
+
+  <br>
+  <hr> 
+
+</details>
+
 
 # Project Structure
 
@@ -138,13 +156,13 @@ List of tasks in order of priority
 - checkBasket()
 
 
-# Links 
+## Links 
 
-### Trello (https://trello.com/b/IJ0mSslm/my-game-project)
+### [Trello] (https://trello.com/b/IJ0mSslm/my-game-project)
 
 ### Slides
 [Link] (www.your-slides-url-here.com)
 
-### Github repository: https://github.com/najjaved/game-stars-collector
+### [`Github repository`](https://github.com/najjaved/game-stars-collector)
 
-## Deployment Link (https://najjaved.github.io/game-stars-collector/)
+## [Deployment Link](https://najjaved.github.io/game-stars-collector/)
