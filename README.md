@@ -5,7 +5,7 @@
 ## [Play the Game!](https://najjaved.github.io/game-stars-collector/)
 
 <p align="center">
-  <img src="https://media3.giphy.com/media/24C2paIV0IBEY/giphy.webp?cid=790b7611p358otegjkcmd2ukmlh653kam745s537mf6t0g2d&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif" style = "border-radius:30px" >
+  <img src="https://media1.giphy.com/media/OFazVPIFIYmFsXROhj/giphy.webp?cid=ecf05e47eeyw4q8enmg5y9zqj74a2umf9i6lxidwjsvt7iwg&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif" style = "border-radius:30px" >
 </p>
 
 
@@ -27,9 +27,8 @@ MVP definition here
 
 - Introduce various difficulty levels based on score, for example increasing stars speed, bonus stars, etc.
 - Responsive design using media queries
-- Improving the UI and styling.
 - Local Storage
-- Add animation
+- Add animations
 - Enable touch screen/ mouse control option
 
 
