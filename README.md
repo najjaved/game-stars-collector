@@ -46,20 +46,18 @@ MVP definition here
 - Game Screen
 - Game Over Screen
 
+## Tasks
 <details>
-  <summary>
-   <h2>Tasks</h2>
-  </summary>
-
- List of tasks in order of priority: 
+  <summary></summary>
+   List of tasks in order of priority: 
 
   - check trello board 
   - ...
 
   <br>
-  <hr> 
 
 </details>
+<br>
 
 
 # Project Structure
