@@ -1,18 +1,20 @@
 class Stars {
-  constructor() {
+  constructor(gameScreen, screenWidth,screenHeight) {
 
-    this.starDiameter = 30;
+    this.gameScreen = gameScreen;
+    this.screenWidth = screenWidth;
+    this.screenHeight = screenHeight;
 
     
     this.starX = 3;
     this.starY = 0;
-    this.starDirectionY = 1; // move in downwards with double the speed
     this.starSpeed = 1;
 
 
     this.framesCounter = 0;
     this.starsCounter = 0;
     this.starsArray =[];
+    
     
   } 
     
@@ -30,37 +32,37 @@ class Stars {
       }
     }
 
-  renderStars() {
-      for(let i =0; i<this.starsArray.length; i+=1) {
-        let aStar = this.starsArray[i]; 
-        const oldY = parseInt(aStar.style.top);
-        const newY = oldY + 2 * speedFactor(); 
-        aStar.style.top = `${newY}px`;
-      }
-      this.framesCounter +=1;
-      // create star every second
-      if (this.framesCounter % 180 ===0){
-        this.starsArray.push(createStar());
-      }
-    }
-
-
-  createStar() {
+    createStar() {
       const newStar = document.createElement('div');
       newStar.setAttribute('id', 'newStar'+ this.starsCounter);
       newStar.setAttribute('class', 'star');
       this.gameScreen.appendChild(newStar); 
-      newStar.style.left = `${generateX()}px`; 
+      newStar.style.left = `${this.generateX()}px`; 
       newStar.style.top = '0px'; 
       this.starsCounter+=1;
 
      return newStar;
     }
+  
+    renderStars() {
+      for(let i =0; i<this.starsArray.length; i+=1) {
+        let aStar = this.starsArray[i]; 
+        const oldY = parseInt(aStar.style.top);
+        const newY = oldY + 2 * this.speedFactor(); 
+        aStar.style.top = `${newY}px`;
+      }
+      this.framesCounter +=1;
+      // create star every second
+      if (this.framesCounter % 180 ===0){
+        this.starsArray.push(this.createStar());
+      }
+    }
+
 
 
   removeStars() {
-      const starsToKeep = this.starsArray.filter((star) => parseInt(star.style.top) <= (this.screenHeight - this.basketHeight));
-      const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - this.basketHeight));
+      const starsToKeep = this.starsArray.filter((star) => parseInt(star.style.top) <= (this.screenHeight - this.basket));
+      const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - this.basket));
       this.starsArray = [...starsToKeep];
       for(let i = 0; i < starsToRemove.length; i++) {
         starsToRemove[i].remove();

@@ -1,6 +1,8 @@
 window.addEventListener('load', () => {
   const startButton = document.getElementById('start-button');
   const restartButton = document.getElementById('restart-button');
+  const infoButton = document.getElementById('know-more');
+  
 
   let game;
 
@@ -8,6 +10,7 @@ window.addEventListener('load', () => {
     console.log('start game');
     game = new Game();
     game.startGameLoop();
+
   }
 
   // eventListener to start game button
@@ -17,6 +20,19 @@ window.addEventListener('load', () => {
 
   restartButton.addEventListener('click', function () {
     startGame();
+  })
+
+  infoButton.addEventListener('click', function () {
+    if(infoButton.innerText === "Know more?"){
+      infoButton.innerText = "hide info";
+      document.getElementById('intro-text').style.display = "block";
+    }
+    else if (infoButton.innerText === "hide info"){
+      infoButton.innerText = "Know more?";
+      document.getElementById('intro-text').style.display = "none";
+
+    }
+
   })
 
   document.addEventListener('keydown', event => {

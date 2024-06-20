@@ -1,8 +1,10 @@
 const basket = document.getElementById('basket');
 const scoreDisplay = document.getElementById('score');
-const livesDisplay = document.getElementById('lives'); 
+const finalScore = document.getElementById('final-score');
+const livesDisplay = document.getElementById('lives');
 const messageDisplay = document.getElementById('end-msg');
 const gifDisplay = document.getElementById('gif');
+const backgroundMusic = document.getElementById('backgound-music');
  
 
 
@@ -16,13 +18,12 @@ class Game {
     this.screenWidth = 800;
     this.screenHeight = 1200;
     this.starDiameter = 50;
-    this.basketWidth = 100;
-    this.basketHeight = 50;
+    this.basketWidth = 200;
+    this.basketHeight = 150;
 
     
     this.starX = 3;
     this.starY = 0;
-    this.starDirectionY = 1; // move in downwards with double the speed
     this.starSpeed = 1;
 
     this.basketX = 0;
@@ -30,8 +31,8 @@ class Game {
     this.basketSpeed = 4;
 
     
-    this.score = 0;
-    this.lives = 3;
+    this.score;
+    this.lives;
     this.gameIsOver = false;
     this.framesCounter = 0;
     this.starsCounter = 0;
@@ -46,10 +47,19 @@ class Game {
     this.startScreen.style.display = 'none';
     this.gameScreen.style.display = 'block';
     this.endScreen.style.display = 'none';
+
+    this.lives= 3; // reset lives
+    this.score =0;
+
+    backgroundMusic.muted = false;
+    backgroundMusic.play();
+    backgroundMusic.volume = 0.5;
+
+
     
     const generateX = () =>{
-      let xCoordinate = Math.floor(Math.random()*10) +1; // Math.floor(Math.random() * (max - min + 1)) + min  -> inclusive of both ends
-      return xCoordinate * 50; // starWidth = 50px
+      let xCoordinate = Math.floor(Math.random()*10 + 1); // offset by starWidth i.e. 50px
+      return xCoordinate * 50;
     }
 
     const speedFactor = () => {
@@ -61,6 +71,19 @@ class Game {
       }
     }
 
+    const createStar = () => {
+      const newStar = document.createElement('div');
+      newStar.setAttribute('id', 'newStar'+ this.starsCounter);
+      newStar.setAttribute('class', 'star');
+      this.gameScreen.appendChild(newStar); 
+      newStar.style.left = `${generateX()}px`; 
+      newStar.style.top = '0px'; 
+      this.starsCounter+=1;
+
+     return newStar;
+    }
+    
+    
     const renderStars = () => {
       for(let i =0; i<this.starsArray.length; i+=1) {
         let aStar = this.starsArray[i]; 
@@ -75,21 +98,8 @@ class Game {
       }
     }
 
-
-    const createStar = () => {
-      const newStar = document.createElement('div');
-      newStar.setAttribute('id', 'newStar'+ this.starsCounter);
-      newStar.setAttribute('class', 'star');
-      this.gameScreen.appendChild(newStar); 
-      newStar.style.left = `${generateX()}px`; 
-      newStar.style.top = '0px'; 
-      this.starsCounter+=1;
-
-     return newStar;
-    }
-
     const renderBasket = () => {
-      this.basketX += this.basketDirectionX * this.basketSpeed; // control basket direction & speed
+      this.basketX += this.basketDirectionX * this.basketSpeed;
   
       // check for bounds
       if (this.basketX < 0) {
@@ -99,31 +109,54 @@ class Game {
         this.basketX = this.screenWidth - this.basketWidth;
       }
   
-      basket.style.left = `${this.basketX}px`; // every frame change its position, add eventlistener for user inputs to move it
+      basket.style.left = `${this.basketX}px`;
   
     }
 
-    const checkBasket = () =>{
-      // star to catch taking into accout basket height, get score..other part where its a loss, full screen height - star height and game over. For catch the stars, inverse logic
-      for(let i =0; i<this.starsArray.length; i+=1) {
-        let aStar = this.starsArray[i]; 
-        let starY = parseInt(aStar.style.top);
-        let starX = parseInt(aStar.style.left)
-        if (starY > this.screenHeight - this.basketHeight &&
-            starX > this.basketX &&
-            starX < this.basketX + this.basketWidth) {
-            this.score += 10;
-        }
-
-        else if(starY > this.screenHeight -this.basketHeight) {
-          this.lives -=1;
-          if (this.lives < 0) {
-            this.gameIsOver = true;
-          }
-        }
+    const renderScore = () => {
+      scoreDisplay.innerText = this.score;
+      }
+  
+    const renderLives = () => {
+      livesDisplay.innerText = this.lives;
       }
 
+
+   const checkBasket = () =>{
+    for(let i =0; i<this.starsArray.length; i+=1) {
+      let aStar = this.starsArray[i]; 
+      let starY = parseInt(aStar.style.top);
+      let starX = parseInt(aStar.style.left)
+      if (
+          starY > this.screenHeight - this.basketHeight &&
+          starX > this.basketX &&
+          starX < this.basketX + this.basketWidth
+        ) {
+          this.score += 10;
+        }
+
+      else if(starY > this.screenHeight -this.basketHeight) {
+        this.lives -=1;
+
+        }
+
     }
+ }
+
+  const checkWinLose = () => {
+    if (this.score >= 150) {
+      console.log('You won!');
+      this.gameIsOver = true;
+      messageDisplay.innerText = 'YOU WIN!!!'; 
+      gifDisplay.src = "https://media2.giphy.com/media/fxsqOYnIMEefC/100.webp?cid=ecf05e472cx2ylhiouyj4cqclb405ihve3d01c2klw5isxmo&ep=v1_gifs_search&rid=100.webp&ct=g"
+      
+    }
+
+    if (this.lives < 0) {
+      this.gameIsOver = true;
+      }
+
+  }
 
 
     const removeStars = () =>{
@@ -135,36 +168,21 @@ class Game {
       }
 
     }
-    
-   
 
-    const checkWinLose = () => {
-      if (this.score >= 200) {
-        this.gameIsOver = true;
-        messageDisplay.innerText = 'YOU WIN!!!' //TODO: change to heading and add one line Congratulations
-        gifDisplay.src = "https://media2.giphy.com/media/fxsqOYnIMEefC/100.webp?cid=ecf05e472cx2ylhiouyj4cqclb405ihve3d01c2klw5isxmo&ep=v1_gifs_search&rid=100.webp&ct=g"
-        
 
-        console.log('You won!');
-  
-      }
+    const gameOver = (intervalId) => {        
+      clearInterval(intervalId);
+      this.gameScreen.style.display = 'none'
+      this.endScreen.style.display = 'block'
+      finalScore.innerText = this.score;
+      backgroundMusic.muted = true;
+      // Cleanup DOM:
+      this.starsArray.forEach((starObject) => {
+        starObject.remove();
 
-      if (this.lives < 0) {
-        this.gameIsOver = true;
-      }
-
-    }
-    
-    
-    const renderScore = () => {
-    scoreDisplay.innerText = this.score;
+      })
     }
 
-    const renderLives = () => {
-      livesDisplay.innerText = this.lives;
-      }
-  
-    
     
     const intervalId = setInterval(() => {
       this.currentFrame +=1;
@@ -173,69 +191,17 @@ class Game {
       renderLives();
       checkBasket();
       checkWinLose(); 
-      renderScore(); // also render score on every iteration
+      renderScore();
       removeStars();
       
-
       if (this.gameIsOver) {
         console.log('gameover');
-        clearInterval(intervalId);
-        // hide game screen
-        this.gameScreen.style.display = 'none'
-        // show final screen with win/lose
-        this.endScreen.style.display = 'block'
-        // hide lives on final screen: livesDisplay.style.display = 'none';
-        this.lives= 3; // reset lives
+        gameOver(intervalId);
+       }
 
-        // Cleanup DOM:
-        this.starsArray.forEach((starObject) => {
-          starObject.remove();
+    }, 1000 / 60);     // update frame 60 times per second
 
-        })
-        
-      }
-    }, 1000 / 60)      // update frame 60 times per second
-
-}
-
-
-
-/*
-    const renderStar = () => {
-      //this.starX +=2; //Math.random() * (this.screenWidth - this.starDiameter);
-      this.starY +=2;
-
-      // star to catch taking into accout basket height, get score..other part where its a loss, full screen height - star height and game over. For catch the stars, inverse logic
-      if (
-        this.starY > this.screenHeight - this.starDiameter - this.basketHeight &&
-        this.starX > this.basketX &&
-        this.starX < this.basketX + this.basketWidth
-      ) {
-        this.score += 10;
-        if (this.score > 50) {
-          this.starDirectionY *= 1.1; // increase stars speed with increasing score, or change size of stars
-  
-        }
-        
-        if (this.score >= 100) {
-          this.gameOver = true;
-          console.log('You won!');
-
-        }
-      }
-  
-      else if ( this.starY >= this.screenHeight - this.starDiameter) {
-        this.lives -=1;
-        livesDisplay.innerText = this.lives;
-        if (lives<0) {
-          this.gameOver = true;
-        }
-        
-      }
-  
-      //this.starY += this.starDirectionY;
-      star.style.left = `${this.starX}px`; 
-      star.style.top = `${this.starY}px`; /* modify css property(top) of star to give impression of falling */
+  }
 
 } 
 

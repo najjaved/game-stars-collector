@@ -8,22 +8,26 @@
     <title>Stars Collector</title>
   </head>
   <body>
-    <header class="header">
-      <h1>Collect Stars</h1>
-    </header>
     <main>
       <!-- #game-intro is initially shown on the game start screen -->
       <div id="game-intro">
+        <h1 class = "title"> Catch the falling stars</h1>
         <img src="./images/starsCollector.jpg" alt="Logo could not be laoded" class="logo-img" />
         <br />
-        <p style="font-size:30px"> Instructions:
-          <ul>
-            <li> - left arrow or key A to move the basket to the left  </li> 
-            <li> - right arrow or key D to move the basket to the right  </li> 
-          </ul>
-         </p>
-        <br />
-        <button id="start-button">Start Game</button>
+        <h3 style="font-size:30px"> How to play?</h3>
+        <p style="font-size:30px"> use left arrow or key A to move the basket to the left
+        <br/>
+        use right arrow or key D to move the basket to the right
+        </p>        
+        <br/>
+        <div id = "buttons"> 
+          <button id="know-more"> Know more?</button>
+          <button id="start-button">Start Game!</button>
+        </div>
+        <p id="intro-text" style="font-size:20px; display: none">
+            In this game, your goal is to catch the falling stars to earn points.<br />
+            You have 3 lives <br/> A star falling on earth means a life lost <br/>  whereas catching a golden star earns you a new life.<br />
+        </p><br/>
       </div>
 
       <div id="game-container">
@@ -41,15 +45,26 @@
 
       <!-- #game-end is initially hidden using CSS style display: none -->
       <div id="game-end">
-        <img src="./images/starsCollector.jpg" alt="" class="logo-img" />
-        <h1 id="end-msg">Game Over</h1>
-        <br />
+        <br/>
+        <h1 id="end-msg" style="color:white" > Ohh no, Game Over 🔥</h1>
+        <br/>
+        <img id ="gif" src="https://media.giphy.com/media/3OymWKuyc2y2BumvVa/giphy.gif" width="300px" alt="death GIF">
+        <br/>
+        <p class="score" style="font-size:30px;color:white">Your score is: <span id="final-score">""</span> <br>
+        </p>
         <button id="restart-button">Have another go?</button>
       </div>
     </main>
 
+    <audio muted loop id="backgound-music">
+      <source src="./sounds/bakground-music.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+
     <script  src="js/basket.js"></script>
     <script  src="js/stars.js"></script>
+    <!--<script  src="js/gameNew.js"></script> -->
     <script  src="js/game.js"></script>
     <script  src="js/main.js"></script>
   </body>

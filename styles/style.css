@@ -14,7 +14,6 @@ body {
   align-items: center;
   text-align: center; 
   width: 100vw;
-  height: 100vh;
   justify-content: center;
   flex-direction: column; 
   overflow: hidden; 
@@ -23,15 +22,16 @@ body {
 
 
 #game-container {
-  display: flex;
-  margin: 50px;
   gap: 30px;
-  padding: 60px 0px;
+  display: flex;
+  flex-direction: row-reverse;
   justify-content: center;
+  font-size: 20px;
   overflow: hidden; /* avoid overflowing from existing screen, i.e. not create scrollbar on game screen   */
 }
 
 #game-screen {
+  margin: 20px;
   display: none;
   align-content: center;
   background-image: url(../images/background-img.jpg);
@@ -48,7 +48,7 @@ body {
   position: absolute; /* manipulate position of ball with reference to the game screen, absolute positions ball  relative to closest ancestor, on game-scareen put position property as relative. Absolute positiong not recommended for responsiveness though since it can cause overlaping on other elements   */
   background-image: url(../images/star.jfif);
   background-size: cover;
-  top: 0; /* can draw movement of the ball by manipulating positions based on user click event */
+  top: 0; /* draw movement of the ball by manipulating positions based on user click event */
   left: 0;
   border-radius: 50%;
 }
@@ -60,7 +60,7 @@ body {
   height: 150px;
   position: absolute; /* move w.r.t to game screen */
   top: 1050px; /* screen height - basket height */
-  left: 600px; /* screen width/2 - paddle width/2 */ /*create variable for it in JS so that we can manipulate it */
+  left: 600px; /* screen width/2 - basket width/2  */
   background-image: url(../images/basket.jfif);
   background-size: cover;
   border-radius: 10px;
@@ -72,13 +72,12 @@ body {
   display: none;
   background-image: url(../images/giphy.webp);
   background-size: cover;
-  padding: 40px 0px;
-  align-items: center;
   text-align: center; 
   width: 100vw;
   height: 100vh;
-  justify-content: center;
+  align-content: center;
   overflow: hidden; 
+
 }
 
 .game-intro p {
@@ -89,13 +88,12 @@ body {
 .logo-img {
   width: 350px;
   border-radius: 35%;
-  /*animation: toDO add blinking image*/
 }
 
 
 body button {
   font-size: 30px;
-  background-color: #870007;
+  background-color: #238b2a;
   color: #fff;
   padding: 20px 40px;
   border: 0;
@@ -104,6 +102,16 @@ body button {
   margin-top: 20px;
   margin-bottom: 20px;
   font-family: cursive;
+}
+
+#buttons {
+  display:flex;
+  gap: 60px;
+  justify-content: space-evenly;
+}
+
+#know-more {
+  background-color: #870007;
 }
 
 

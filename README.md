@@ -5,14 +5,14 @@
 ## [Play the Game!](https://najjaved.github.io/game-stars-collector/)
 
 <p align="center">
-  <img src="https://media1.giphy.com/media/OFazVPIFIYmFsXROhj/giphy.webp?cid=ecf05e47eeyw4q8enmg5y9zqj74a2umf9i6lxidwjsvt7iwg&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif" style = "border-radius:30px" >
+  <img src="https://media3.giphy.com/media/24C2paIV0IBEY/giphy.webp?cid=790b7611p358otegjkcmd2ukmlh653kam745s537mf6t0g2d&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif" style = "border-radius:30px" >
 </p>
 
 
 
 ## Description
 
-Brief description of the project
+Brief description of the project here
 
 ## MVP
 MVP definition here
@@ -29,17 +29,16 @@ MVP definition here
 - Responsive design using media queries
 - Improving the UI and styling.
 - Local Storage
-- JS Audio() and JS Image()
 - Add animation
+- Enable touch screen/ mouse control option
 
 
 ## Technologies Used
 
 - HTML
 - CSS
-- JavaScript
+- JavaScript, OOP
 - DOM Manipulation
-- JS Classes
 
 
 ## States
@@ -55,7 +54,7 @@ MVP definition here
 
  List of tasks in order of priority: 
 
-  - nfmfdsndd mfs 
+  - check trello board 
   - ...
 
   <br>
@@ -67,16 +66,14 @@ MVP definition here
 # Project Structure
 ## main.js
 
-- buildDom();
-- main();
-- createSplashScreen();
-- removeSplashScreen();
-- createGameScreen();
-- removeGameScreen();
-- createGameOverScreen();
-- removeGameOverScreen();
 - startGame();
-- gameOver();
+
+Evemt Listeners:
+- load
+- click
+- keyup
+- keydown
+
 
 ## Game.js
 
@@ -103,26 +100,16 @@ MVP definition here
 
 
     - this.inputName;
-    - this.dificultyMessage;
     - this.totalScore;
 
 
-    - this.soundDificultyUp;
-    - this.soundSquish;
-    - this.soundGameOver;
-
 - startGameLoop()
-- checkWinLose()
-- gameOver()
-
-
-- dificultyIncrease()
 - updateScore(name, score)
 
 ## Stars.js 
 
 - Stars()
-    - his.starDiameter;
+    - this.starDiameter;
 
     - this.starX;
     - this.starY;
@@ -152,7 +139,6 @@ MVP definition here
 
 
 - renderBasket()
-- checkBasket()
 
 
 ## Links:
