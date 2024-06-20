@@ -1,4 +1,4 @@
-![Game Logo](https://github.com/najjaved/game-stars-collector/blob/development/images/starsCollector.jpg)
+<!--![Game Logo](https://github.com/najjaved/game-stars-collector/blob/development/images/starsCollector.jpg) -->
 
 # GAME | Stars Collector
 

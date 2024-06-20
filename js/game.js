@@ -2,6 +2,7 @@ const basket = document.getElementById('basket');
 const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives'); 
 const messageDisplay = document.getElementById('end-msg');
+const gifDisplay = document.getElementById('gif');
  
 
 
@@ -12,8 +13,8 @@ class Game {
     this.endScreen = document.querySelector('#game-end');
 
     
-    this.screenWidth = 500;
-    this.screenHeight = 800;
+    this.screenWidth = 800;
+    this.screenHeight = 1200;
     this.starDiameter = 50;
     this.basketWidth = 100;
     this.basketHeight = 50;
@@ -45,8 +46,6 @@ class Game {
     this.startScreen.style.display = 'none';
     this.gameScreen.style.display = 'block';
     this.endScreen.style.display = 'none';
-
-    this.lives= 3; // reset lives
     
     const generateX = () =>{
       let xCoordinate = Math.floor(Math.random()*10) +1; // Math.floor(Math.random() * (max - min + 1)) + min  -> inclusive of both ends
@@ -142,7 +141,10 @@ class Game {
     const checkWinLose = () => {
       if (this.score >= 200) {
         this.gameIsOver = true;
-        messageDisplay.innerText = 'You won!'
+        messageDisplay.innerText = 'YOU WIN!!!' //TODO: change to heading and add one line Congratulations
+        gifDisplay.src = "https://media2.giphy.com/media/fxsqOYnIMEefC/100.webp?cid=ecf05e472cx2ylhiouyj4cqclb405ihve3d01c2klw5isxmo&ep=v1_gifs_search&rid=100.webp&ct=g"
+        
+
         console.log('You won!');
   
       }
@@ -183,6 +185,7 @@ class Game {
         // show final screen with win/lose
         this.endScreen.style.display = 'block'
         // hide lives on final screen: livesDisplay.style.display = 'none';
+        this.lives= 3; // reset lives
 
         // Cleanup DOM:
         this.starsArray.forEach((starObject) => {

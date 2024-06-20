@@ -8,22 +8,26 @@
     <title>Stars Collector</title>
   </head>
   <body>
-    <header class="header">
-      <h1>Collect Stars</h1>
-    </header>
     <main>
       <!-- #game-intro is initially shown on the game start screen -->
       <div id="game-intro">
+        <h1 class = "title"> Catch the falling stars</h1>
         <img src="./images/starsCollector.jpg" alt="Logo could not be laoded" class="logo-img" />
         <br />
-        <p style="font-size:30px"> Instructions:
-          <ul>
-            <li> - left arrow or key A to move the basket to the left  </li> 
-            <li> - right arrow or key D to move the basket to the right  </li> 
-          </ul>
-         </p>
-        <br />
-        <button id="start-button">Start Game</button>
+        <p class = "introText" style="font-size:30px">
+          In this game, you goal is to catch the falling stars to earn points.<br />
+          You have 3 lives <br/> A star falling on earth means a life lost <br/>  whereas catching a golden star earns you a new life.<br />
+        </p><br/>
+        <h3 style="font-size:30px"> How to play?</h3>
+        <p style="font-size:30px"> use left arrow or key A to move the basket to the left
+        <br/>
+        use right arrow or key D to move the basket to the right
+        </p>        
+        <br/>
+        <button id="start-button">Start Game!</button>
+      <div> 
+        <audio src="./sounds/bakground-music.mp3" id="backgound-music" loop></audio>
+      </div>
       </div>
 
       <div id="game-container">
@@ -41,10 +45,14 @@
 
       <!-- #game-end is initially hidden using CSS style display: none -->
       <div id="game-end">
-        <img src="./images/starsCollector.jpg" alt="" class="logo-img" />
-        <h1 id="end-msg">Game Over</h1>
-        <br />
-        <button id="restart-button">Have another go?</button>
+        <br/>
+        <h1 id="end-msg" style="color:white" > Game Over 🔥</h1>
+        <br/>
+        <img id ="gif" src="https://media.giphy.com/media/3OymWKuyc2y2BumvVa/giphy.gif" width="300px" alt="death GIF">
+        <br/>
+        <p class="score" style="font-size:30px"><span>Your score is: </span> <br>
+        </p>
+        <button id="restart-button">Play again?</button>
       </div>
     </main>
 

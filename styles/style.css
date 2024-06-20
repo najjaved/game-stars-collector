@@ -2,30 +2,42 @@ body {
   padding: 0;
   text-align: center;
   margin: 0;
+  font-family: cursive;
+  /*color: white*/
 }
 
 #game-intro {
+  display: flex;
+  /*background-image: url(../images/giphy.webp);*/
+  background-size: cover;
   padding: 40px 0px;
-  overflow: hidden;
+  align-items: center;
+  text-align: center; 
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  flex-direction: column; 
+  overflow: hidden; 
+  
 }
 
 
 #game-container {
   display: flex;
-  gap: 50px;
-  width: 100vw;
-  padding: 40px 0px;
+  margin: 50px;
+  gap: 30px;
+  padding: 60px 0px;
   justify-content: center;
-  overflow: hidden;
+  overflow: hidden; /* avoid overflowing from existing screen, i.e. not create scrollbar on game screen   */
 }
 
 #game-screen {
   display: none;
   align-content: center;
-  overflow: hidden; /* avoid overflowing from existing screen, i.e. not create scrollbar on game screen   */
-  position: relative;
   background-image: url(../images/background-img.jpg);
   background-size: cover;
+  overflow: hidden;
+  position: relative;
   border-radius: 20px
 }
 
@@ -44,11 +56,11 @@ body {
 
 #basket {
   background: red;
-  width: 100px;
-  height: 50px;
+  width: 200px;
+  height: 150px;
   position: absolute; /* move w.r.t to game screen */
-  top: 750px; /* screen height - basket height */
-  left: 150px; /* screen width/2 - paddle width/2 */ /*create variable for it in JS so that we can manipulate it */
+  top: 1050px; /* screen height - basket height */
+  left: 600px; /* screen width/2 - paddle width/2 */ /*create variable for it in JS so that we can manipulate it */
   background-image: url(../images/basket.jfif);
   background-size: cover;
   border-radius: 10px;
@@ -58,11 +70,20 @@ body {
 
 #game-end {
   display: none;
+  background-image: url(../images/giphy.webp);
+  background-size: cover;
+  padding: 40px 0px;
+  align-items: center;
+  text-align: center; 
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  overflow: hidden; 
 }
 
 .game-intro p {
-  font-size: 18px;
-  font-family: "Verdana";
+  font-size: 50px;
+  
 }
 
 .logo-img {
@@ -80,7 +101,9 @@ body button {
   border: 0;
   box-shadow: 0;
   border-radius: 200px;
+  margin-top: 20px;
   margin-bottom: 20px;
+  font-family: cursive;
 }
 
 
