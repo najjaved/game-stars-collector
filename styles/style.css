@@ -34,7 +34,7 @@ body {
   margin: 20px;
   display: none;
   align-content: center;
-  background-image: url(./images/background-img.jpg);
+  background-image: url(/images/background-img.jpg);
   background-size: cover;
   overflow: hidden;
   position: relative;
@@ -46,7 +46,7 @@ body {
   width: 50px;
   height: 30px;
   position: absolute; /* manipulate position of ball with reference to the game screen, absolute positions ball  relative to closest ancestor, on game-scareen put position property as relative. Absolute positiong not recommended for responsiveness though since it can cause overlaping on other elements   */
-  background-image: url(./images/star.jfif);
+  background-image: url(/images/star.jfif);
   background-size: cover;
   top: 0; /* draw movement of the ball by manipulating positions based on user click event */
   left: 0;
@@ -61,7 +61,7 @@ body {
   position: absolute; /* move w.r.t to game screen */
   top: 1050px; /* screen height - basket height */
   left: 600px; /* screen width/2 - basket width/2  */
-  background-image: url(./images/basket.jfif);
+  background-image: url(/images/basket.jfif);
   background-size: cover;
   border-radius: 10px;
   margin-left: 2px;
@@ -70,7 +70,7 @@ body {
 
 #game-end {
   display: none;
-  background-image: url(./images/giphy.webp);
+  background-image: url(/images/giphy.webp);
   background-size: cover;
   text-align: center; 
   width: 100vw;
