@@ -4,7 +4,7 @@ const finalScore = document.getElementById('final-score');
 const livesDisplay = document.getElementById('lives');
 const messageDisplay = document.getElementById('end-msg');
 const gifDisplay = document.getElementById('gif');
-const backgroundMusic = document.getElementById('backgound-music');
+//const backgroundMusic = document.getElementById('backgound-music');
  
 
 
@@ -51,9 +51,9 @@ class Game {
     this.lives= 3; // reset lives
     this.score =0;
 
-    backgroundMusic.muted = false;
+    /*backgroundMusic.muted = false;
     backgroundMusic.play();
-    backgroundMusic.volume = 0.5;
+    backgroundMusic.volume = 0.5; */
 
 
     
