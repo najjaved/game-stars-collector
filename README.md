@@ -1,6 +1,6 @@
 <!--![Game Logo](https://github.com/najjaved/game-stars-collector/blob/development/images/starsCollector.jpg) -->
 
-# GAME | Stars Collector
+# GAME | Catch the falling Stars 
 
 ## [Play the Game!](https://najjaved.github.io/game-stars-collector/)
 
@@ -140,6 +140,6 @@ Evemt Listeners:
 
 ## Links:
 ### [`Trello`](https://trello.com/b/IJ0mSslm/my-game-project)
-### [`Slides`](www.your-slides-url-here.com)
+### [`Slides`](https://docs.google.com/presentation/d/1CrUeyLBTDnBFgGiYDTbboXrgNxxXFVIE-n4L15YlWZk/edit#slide=id.gc6fa3c898_0_16)
 ### [`Github repository`](https://github.com/najjaved/game-stars-collector)
 ### [`Deployment Link`](https://najjaved.github.io/game-stars-collector/)
