@@ -28,6 +28,7 @@ class Game {
     this.starSpeed = 2;
 
     this.basketX = 0;
+    this.basketY = 0;
     this.basketDirectionX = 0; // initial position, not moving
     this.basketSpeed = 4;
 
@@ -78,7 +79,7 @@ class Game {
       newStar.setAttribute('class', 'star');
       this.gameScreen.appendChild(newStar); 
       newStar.style.left = `${generateX()}px`; 
-      newStar.style.top = '0px'; 
+      newStar.style.top = `${this.basketY}px`; 
       this.starsCounter+=1;
 
      return newStar;
@@ -93,8 +94,8 @@ class Game {
         aStar.style.top = `${newY}px`;
       }
       this.framesCounter +=1;
-      // create star every second
-      if (this.framesCounter % 180 ===0){
+      // create star every half second
+      if (this.framesCounter % 90 ===0){
         this.starsArray.push(createStar());
       }
     }
