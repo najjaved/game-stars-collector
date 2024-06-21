@@ -162,8 +162,9 @@ class Game {
 
 
     const removeStars = () =>{
+      //const losingHeight = this.screenHeight + this.starHeight;
       const starsToKeep = this.starsArray.filter((star) => parseInt(star.style.top) <= (this.screenHeight - this.basketHeight));
-      const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - this.basketHeight));
+      const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - this.basketHeight ));
       this.starsArray = [...starsToKeep];
       for(let i = 0; i < starsToRemove.length; i++) {
         starsToRemove[i].remove();

@@ -12,24 +12,26 @@
 
 ## Description
 
-Brief description of the project here
+Catch the falling stars, is a game where a player tries to collect stars to gain points. In each game round, player has 3 lives. A star falling on earth means a life lost whereas catching a golden star earns you a new life.If the score reaches 150, player wins. If lives are exhaused, game is over and palyer loses! After the game ends, top score is displayed along with a player name on screen.
 
-## MVP
-MVP definition here
+
 ### Main Functionalities
 
-- Stars fall from the sky automatically and player tries to collect them in a basket
-- Player moves basket direction by clicking `left` and `right`.
-Introduce various difficulty levels based on score, for example increasing stars speed, bonus stars, etc.
-- 
--
+- Stars fall from the sky automatically in intervals.
+- Player tries to collect them in a basket by clicking key A/ arrow `left` and key D/ arrow `right` to control its movement.
+- A score is calculated based number of stars collected.
+- The game ends when 3 chances are missed i.e. a fell on ground, or when a score of 150 is reached.
+- The game difficulty increases as the score is increased. This changes the speed and frequency of stars.
+- For each game play, scores are tracked with a player name and score.
+
 
 ## Backlog Functionalities
 
 - Refactor
 - Display top score and player name when game is over.
 - Responsive design using media queries
-- Add animations
+- Add animations e.g. when a star is lost
+- Add audios for impact, win and lose
 - Enable touch screen/ mouse control option
 
 
@@ -52,8 +54,24 @@ Introduce various difficulty levels based on score, for example increasing stars
   <summary></summary>
    List of tasks in order of priority: 
 
-  - check trello board 
-  - ...
+  - Game idea presentation & validation
+  - Project planing & collection of assests: images, GIFs, audio files
+  - Split tasks and setup Kanban board
+  - Game implementation:  
+    - Create splash screen
+    - Create game screen
+    - Create end screen with win or lose display
+    - implementation of user interaction
+    - Render basket object and its movement control
+    - Create stars objects dynamically and render them onto game screen
+    - Implement Win/Lose logic
+    - Implement game over function
+    - Add background audio when game starts
+    - Finalize styling
+  - Update Readme
+  - Deployment and testing live
+  - Prepare presentaion slides
+
 
   <br>
 
@@ -83,36 +101,59 @@ Evemt Listeners:
 
     - this.screenWidth;
     - this.screenHeight;
-    - this.starDiameter;
 
+
+    - this.basketWidth;
+    - this.basketHeight;
+    - this.basketX;
+    - this.basketY;
+    - this.basketSpeed;
+
+    - this.starWidth;
+    - this.starHeight;
+    - this.starX;
+    - this.starY;
+    - this.starsSpeed;
 
     - this.lives;
     - this.score;
     - this.gameIsOver;
 
-    - this.background;
     
     - this.framesCounter;
     - this.starsCounter;
     - this.starsArray;
 
 
-    - this.inputName;
+    - this.playerName;
     - this.totalScore;
 
 
 - startGameLoop()
+- generateX()
+- speedFactor()
+- createStar()
+- renderStars()
+- checkBasket()
+- checkWinLose()
+- gameOver()
+- removeStars()
 - updateScore(name, score)
 
 ## Stars.js 
 
 - Stars()
-    - this.starDiameter;
 
+    - this.starWidth;
+    - this.starHeight;
     - this.starX;
     - this.starY;
-    - this.starDirectionY;
-    - this.starSpeed;
+    - this.starsSpeed;
+
+    - this.basketWidth;
+    - this.basketHeight;
+    - this.basketX;
+    - this.basketY;
 
     - this.framesCounter;
     - this.starsCounter;
@@ -123,7 +164,6 @@ Evemt Listeners:
 - speedFactor()
 - createStar()
 - renderStars()
-- removeStars()
 
 ## Basket.js 
 
