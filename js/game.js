@@ -17,14 +17,15 @@ class Game {
     
     this.screenWidth = 800;
     this.screenHeight = 1200;
-    this.starDiameter = 50;
+    this.starWidth = 50;
+    this.starHeight = 30;
     this.basketWidth = 200;
     this.basketHeight = 150;
 
     
     this.starX = 3;
     this.starY = 0;
-    this.starSpeed = 1;
+    this.starSpeed = 2;
 
     this.basketX = 0;
     this.basketDirectionX = 0; // initial position, not moving
@@ -66,7 +67,7 @@ class Game {
       if(this.score < 50) {
         return this.starSpeed;
       } else if(this.score >= 50) {
-        let speedUp = 2.0;
+        let speedUp = 5.0;
         return this.starSpeed + this.score / 200 * speedUp;
       }
     }
@@ -129,10 +130,11 @@ class Game {
       let starX = parseInt(aStar.style.left)
       if (
           starY > this.screenHeight - this.basketHeight &&
-          starX > this.basketX &&
+          starX > this.basketX + 2 && //check for basket edges
           starX < this.basketX + this.basketWidth
         ) {
           this.score += 10;
+          renderScore();
         }
 
       else if(starY > this.screenHeight -this.basketHeight) {
@@ -191,7 +193,6 @@ class Game {
       renderLives();
       checkBasket();
       checkWinLose(); 
-      renderScore();
       removeStars();
       
       if (this.gameIsOver) {
