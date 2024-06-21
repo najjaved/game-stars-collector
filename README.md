@@ -20,14 +20,15 @@ MVP definition here
 
 - Stars fall from the sky automatically and player tries to collect them in a basket
 - Player moves basket direction by clicking `left` and `right`.
+Introduce various difficulty levels based on score, for example increasing stars speed, bonus stars, etc.
 - 
 -
 
 ## Backlog Functionalities
 
-- Introduce various difficulty levels based on score, for example increasing stars speed, bonus stars, etc.
+- Refactor
+- Display top score and player name when game is over.
 - Responsive design using media queries
-- Local Storage
 - Add animations
 - Enable touch screen/ mouse control option
 
@@ -140,6 +141,6 @@ Evemt Listeners:
 
 ## Links:
 ### [`Trello`](https://trello.com/b/IJ0mSslm/my-game-project)
-### [`Slides`](https://docs.google.com/presentation/d/1CrUeyLBTDnBFgGiYDTbboXrgNxxXFVIE-n4L15YlWZk/edit#slide=id.gc6fa3c898_0_16)
+### [`Slides`](https://docs.google.com/presentation/d/1CrUeyLBTDnBFgGiYDTbboXrgNxxXFVIE-n4L15YlWZk/edit#slide=id.g2e72b1bab55_0_14)
 ### [`Github repository`](https://github.com/najjaved/game-stars-collector)
 ### [`Deployment Link`](https://najjaved.github.io/game-stars-collector/)
