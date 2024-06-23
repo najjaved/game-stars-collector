@@ -55,7 +55,7 @@ body {
 .goldenStar {
   background: gold;
   width: 30px;
-  height: 30px;
+  height: 40px;
   position: absolute; 
   background-image: url(../images/goldenStar.jpg);
   background-size: cover;

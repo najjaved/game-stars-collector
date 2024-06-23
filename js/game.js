@@ -140,12 +140,12 @@ class Game {
       let starX = parseInt(aStar.style.left)
       if (
           starY > this.screenHeight - this.basketHeight &&
-          starX > this.basketX + 2 && //check for basket edges
+          starX > this.basketX +5 && //check for basket edges
           starX < this.basketX + this.basketWidth
         ) {
           this.score += 10;
           renderScore();
-          if (this.golden) this.lives +=1;
+          //if (this.golden) this.lives +=1;
         }
 
       else if(starY > this.screenHeight -this.basketHeight) this.lives -=1;
