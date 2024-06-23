@@ -53,15 +53,6 @@ class Game {
         this.gameIsOver = true;
       }
 
-      else if (this.starY >= this.screenHeight - this.starDiameter) {
-        this.lives -=1;
-        //livesDisplay.innerText = this.lives;
-        if (this.lives<0) {
-          this.gameOver = true;
-        }
-        
-      }
-
     }
     
     const checkBasket = () => {
@@ -72,11 +63,17 @@ class Game {
         let starX = parseInt(aStar.style.left)
         if (
             starY >  this.screenHeight - this.basket.basketHeight &&
-            starX > this.basket.basketX &&
+            starX > this.basket.basketX + 3 && //check for basket edges
             starX < this.basket.basketX + this.basket.basketWidth
           ) {
             this.score += 10;
+            renderScore();
           }
+          else if(starY > this.screenHeight -this.basket.basketHeight) {
+            this.lives -=1;
+    
+          }
+          
         }
       }
 
@@ -113,7 +110,6 @@ class Game {
       renderLives();
       checkBasket();
       checkWinLose(); 
-      renderScore();
       this.stars.removeStars();
       
       if (this.gameIsOver) {
