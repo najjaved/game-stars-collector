@@ -7,7 +7,9 @@ class Stars {
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
 
-    
+    this.starWidth = 50;
+    this.starHeight = 30;
+
     this.starX = 2;
     this.starY = 0;
     this.starSpeed = 2;
@@ -76,6 +78,7 @@ class Stars {
 
 
   removeStars() {
+    //const losingHeight = this.screenHeight + this.starHeight;
       const starsToKeep = this.starsArray.filter((star) => parseInt(star.style.top) <= (this.screenHeight - Basket.height()));
       const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - Basket.height()));
       this.starsArray = [...starsToKeep];

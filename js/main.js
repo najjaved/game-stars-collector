@@ -39,11 +39,11 @@ window.addEventListener('load', () => {
     if (event.code === 'KeyA' || event.code === 'ArrowLeft') {
       //event.preventDefault();
       // Move to the left
-      game.basket.basketDirectionX = -1
+      game.basketDirectionX = -1
     }
     if (event.code === 'KeyD' || event.code === 'ArrowRight') {
       // Move basket to the right
-      game.basket.basketDirectionX = 1
+      game.basketDirectionX = 1
     }
   })
 
@@ -55,7 +55,7 @@ window.addEventListener('load', () => {
       event.code === 'ArrowRight'
     ) {
       // Stop the basket from moving
-      game.basket.basketDirectionX = 0
+      game.basketDirectionX = 0
     }
   })
 

@@ -19,6 +19,7 @@ class Game {
     this.screenHeight = 1200;
     this.starWidth = 50;
     this.starHeight = 30;
+
     this.basketWidth = 200;
     this.basketHeight = 150;
 
@@ -38,9 +39,8 @@ class Game {
     this.gameIsOver = false;
     this.framesCounter = 0;
     this.starsCounter = 0;
-    this.goldenStarsCounter = 0;
     this.starsArray =[];
-    this.goldenStarsArray =[];
+    this.golden = false;
     
   } 
 
@@ -57,7 +57,7 @@ class Game {
 
     backgroundMusic.muted = false;
     backgroundMusic.play();
-    backgroundMusic.volume = 0.5;
+    backgroundMusic.volume = 0.3;
 
 
     
@@ -79,13 +79,19 @@ class Game {
     const createStar = () => {
       const newStar = document.createElement('div');
       newStar.setAttribute('id', 'newStar'+ this.starsCounter);
-      newStar.setAttribute('class', 'star');
+      if((Math.round(Math.random()*10) +1) >5){
+        newStar.setAttribute('class', 'goldenStar');
+        this.golden = true;
+      }
+      else {
+        newStar.setAttribute('class', 'star');
+        this.golden = false;
+      }
       this.gameScreen.appendChild(newStar); 
       newStar.style.left = `${generateX()}px`; 
-      newStar.style.top = `${this.basketY}px`; 
+      newStar.style.top = `${this.starY}px`; 
       this.starsCounter+=1;
-
-     return newStar;
+      return newStar;
     }
     
     
@@ -97,8 +103,8 @@ class Game {
         aStar.style.top = `${newY}px`;
       }
       this.framesCounter +=1;
-      // create star every second
-      if (this.framesCounter % 180 ===0){
+      // create star every half second
+      if (this.framesCounter % 90 ===0){
         this.starsArray.push(createStar());
       }
     }
@@ -139,12 +145,10 @@ class Game {
         ) {
           this.score += 10;
           renderScore();
+          if (this.golden) this.lives +=1;
         }
 
-      else if(starY > this.screenHeight -this.basketHeight) {
-        this.lives -=1;
-
-        }
+      else if(starY > this.screenHeight -this.basketHeight) this.lives -=1;
 
     }
  }

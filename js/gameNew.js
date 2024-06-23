@@ -15,11 +15,11 @@ class Game {
     
     this.screenWidth = 800;
     this.screenHeight = 1200;
-    this.starDiameter = 50;
 
     
     this.lives= 3; // reset lives
     this.score =0;
+    this.gameIsOver = false;
 
     backgroundMusic.muted = false;
     backgroundMusic.play();
@@ -37,6 +37,9 @@ class Game {
     this.startScreen.style.display = 'none';
     this.gameScreen.style.display = 'block';
     this.endScreen.style.display = 'none';
+
+    this.lives= 3; // reset lives
+    this.score =0;
 
    
 
@@ -56,7 +59,6 @@ class Game {
     }
     
     const checkBasket = () => {
-      // star to catch taking into accout basket height, get score..other part where its a loss, full screen height - star height and game over. For catch the stars, inverse logic
       for(let i =0; i<this.stars.starsArray.length; i+=1) {
         let aStar = this.stars.starsArray[i]; 
         let starY = parseInt(aStar.style.top);
