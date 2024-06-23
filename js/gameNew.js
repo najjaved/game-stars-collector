@@ -68,11 +68,9 @@ class Game {
           ) {
             this.score += 10;
             renderScore();
+            if (this.stars.golden === true) this.lives +=1;
           }
-          else if(starY > this.screenHeight -this.basket.basketHeight) {
-            this.lives -=1;
-    
-          }
+          else if(starY > this.screenHeight -this.basket.basketHeight) this.lives -=1;
           
         }
       }

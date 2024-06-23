@@ -44,13 +44,13 @@ class Stars {
   createStar() { 
     const newStar = document.createElement('div');
     newStar.setAttribute('id', 'newStar'+ this.starsCounter);
-    if((Math.round(Math.random()*10) +1) >5){
+    if((Math.round(Math.random()*10) +1) >8){
       newStar.setAttribute('class', 'goldenStar');
-      //this.golden = true;
+      this.golden = true;
     }
     else {
       newStar.setAttribute('class', 'star');
-      //this.golden = false;
+      this.golden = false;
     }
     this.gameScreen.appendChild(newStar); 
     newStar.style.left = `${this.generateX()}px`; 
