@@ -4,23 +4,23 @@
 
 ## [Play the Game!](https://najjaved.github.io/game-stars-collector/)
 
-<p align="center">
-  <img src="https://media1.giphy.com/media/OFazVPIFIYmFsXROhj/giphy.webp?cid=ecf05e47eeyw4q8enmg5y9zqj74a2umf9i6lxidwjsvt7iwg&ep=v1_gifs_search&rid=giphy.webp&ct=g" width="400" alt="game start gif" style = "border-radius:30px" >
+<p align="left">
+  <img src= images/starCollectors.png  width="400" alt="game start gif" style = "border-radius:30px" >
 </p>
 
 
 
 ## Description
 
-Catch the falling stars, is a game where a player tries to collect stars to gain points. In each game round, player has 3 lives. A star falling on earth means a life lost whereas catching a golden star earns you a new life.If the score reaches 150, player wins. If lives are exhaused, game is over and palyer loses! After the game ends, top score is displayed along with a player name on screen.
+Catch the falling stars, is a game where a player tries to collect stars to gain points. In each game round, player has 3 lives. A star falling on earth means a life lost whereas catching a golden star earns you a new life.If the score reaches 200, player wins. If lives are exhaused, game is over and palyer loses! After the game ends, top score is displayed along with a player name on screen.
 
 
 ### Main Functionalities
 
 - Stars fall from the sky automatically in intervals.
 - Player tries to collect them in a basket by clicking key A/ arrow `left` and key D/ arrow `right` to control its movement.
-- A score is calculated based number of stars collected.
-- The game ends when 3 chances are missed i.e. a fell on ground, or when a score of 150 is reached.
+- A score is calculated based on number of stars collected.
+- The game ends when 3 chances are missed i.e. a star fell on ground, or when a score of 200 is reached.
 - The game difficulty increases as the score is increased. This changes the speed and frequency of stars.
 - For each game play, scores are tracked with a player name and score.
 

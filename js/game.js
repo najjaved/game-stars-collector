@@ -23,7 +23,7 @@ class Game {
     this.basketHeight = 150;
 
     
-    this.starX = 3;
+    this.starX = 2;
     this.starY = 0;
     this.starSpeed = 2;
 
@@ -38,7 +38,9 @@ class Game {
     this.gameIsOver = false;
     this.framesCounter = 0;
     this.starsCounter = 0;
+    this.goldenStarsCounter = 0;
     this.starsArray =[];
+    this.goldenStarsArray =[];
     
   } 
 
@@ -64,6 +66,7 @@ class Game {
       return xCoordinate * 50;
     }
 
+
     const speedFactor = () => {
       if(this.score < 50) {
         return this.starSpeed;
@@ -79,7 +82,7 @@ class Game {
       newStar.setAttribute('class', 'star');
       this.gameScreen.appendChild(newStar); 
       newStar.style.left = `${generateX()}px`; 
-      newStar.style.top = `${this.basketY}px`; 
+      newStar.style.top = `${0}px`; 
       this.starsCounter+=1;
 
      return newStar;
@@ -94,8 +97,8 @@ class Game {
         aStar.style.top = `${newY}px`;
       }
       this.framesCounter +=1;
-      // create star every half second
-      if (this.framesCounter % 90 ===0){
+      // create star every second
+      if (this.framesCounter % 180 ===0){
         this.starsArray.push(createStar());
       }
     }
@@ -146,20 +149,20 @@ class Game {
     }
  }
 
-  const checkWinLose = () => {
-    if (this.score >= 150) {
-      console.log('You won!');
-      this.gameIsOver = true;
-      messageDisplay.innerText = 'YOU WIN!!!'; 
-      gifDisplay.src = "https://media2.giphy.com/media/fxsqOYnIMEefC/100.webp?cid=ecf05e472cx2ylhiouyj4cqclb405ihve3d01c2klw5isxmo&ep=v1_gifs_search&rid=100.webp&ct=g"
-      
-    }
-
-    if (this.lives < 0) {
-      this.gameIsOver = true;
+    const checkWinLose = () => {
+      if (this.score >= 200) {
+        console.log('You won!');
+        this.gameIsOver = true;
+        messageDisplay.innerText = 'YOU WIN!!!'; 
+        gifDisplay.src = "https://media2.giphy.com/media/fxsqOYnIMEefC/100.webp?cid=ecf05e472cx2ylhiouyj4cqclb405ihve3d01c2klw5isxmo&ep=v1_gifs_search&rid=100.webp&ct=g"
+        
       }
 
-  }
+      if (this.lives < 0) {
+        this.gameIsOver = true;
+        }
+
+    }
 
 
     const removeStars = () =>{

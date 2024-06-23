@@ -1,4 +1,4 @@
-
+"use strict";
 const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives'); 
 const messageDisplay = document.getElementById('end-msg');
@@ -21,7 +21,7 @@ class Game {
     this.lives = 3;
 
     this.basket = new Basket(this.screenWidth,  this.screenHeight, this.lives);
-    this.stars = new Stars(this.gameScreen, this.screenWidth, this.screenHeight);
+    this.stars = new Stars(this.gameScreen, this.screenWidth, this.screenHeight, this.score);
     
   } 
 
@@ -96,7 +96,7 @@ class Game {
       this.lives= 3; // reset lives
 
       // Cleanup DOM:
-      stars.starsArray.forEach((starObject) => {
+      this.stars.starsArray.forEach((starObject) => {
         starObject.remove();
 
       })

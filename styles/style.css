@@ -42,7 +42,6 @@ body {
 }
 
 .star {
-  background: gold;
   width: 50px;
   height: 30px;
   position: absolute; /* manipulate position of ball with reference to the game screen, absolute positions ball  relative to closest ancestor, on game-scareen put position property as relative. Absolute positiong not recommended for responsiveness though since it can cause overlaping on other elements   */
@@ -50,6 +49,18 @@ body {
   background-size: cover;
   top: 0; /* draw movement of the ball by manipulating positions based on user click event */
   left: 0;
+  border-radius: 50%;
+}
+
+.goldenStar {
+  background: gold;
+  width: 30px;
+  height: 30px;
+  position: absolute; 
+  background-image: url(../images/goldenStar.jpg);
+  background-size: cover;
+  top: 0; 
+  left: 30;
   border-radius: 50%;
 }
 

@@ -1,19 +1,28 @@
+"use strict";
+
 class Stars {
-  constructor(gameScreen, screenWidth,screenHeight) {
+  constructor(gameScreen, screenWidth,screenHeight, score) {
 
     this.gameScreen = gameScreen;
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
 
     
-    this.starX = 3;
+    this.starX = 2;
     this.starY = 0;
-    this.starSpeed = 1;
+    this.starSpeed = 2;
 
 
     this.framesCounter = 0;
     this.starsCounter = 0;
     this.starsArray =[];
+
+    //this.id = Math.round(Math.random()*1000);
+
+    this.score =score;
+
+    this.golden = false;
+
     
     
   } 
@@ -32,37 +41,43 @@ class Stars {
       }
     }
 
-    createStar() {
-      const newStar = document.createElement('div');
-      newStar.setAttribute('id', 'newStar'+ this.starsCounter);
+  createStar() { 
+    const newStar = document.createElement('div');
+    newStar.setAttribute('id', 'newStar'+ this.starsCounter);
+    if((Math.round(Math.random()*10) +1) >5){
+      newStar.setAttribute('class', 'goldenStar');
+      //this.golden = true;
+    }
+    else {
       newStar.setAttribute('class', 'star');
-      this.gameScreen.appendChild(newStar); 
-      newStar.style.left = `${this.generateX()}px`; 
-      newStar.style.top = '0px'; 
-      this.starsCounter+=1;
+      //this.golden = false;
+    }
+    this.gameScreen.appendChild(newStar); 
+    newStar.style.left = `${this.generateX()}px`; 
+    newStar.style.top = `${this.starY}px`; 
+    this.starsCounter+=1;
+    return newStar;
+  }
 
-     return newStar;
+  renderStars() {
+    for(let i =0; i<this.starsArray.length; i+=1) {
+      let aStar = this.starsArray[i]; 
+      const oldY = parseInt(aStar.style.top);
+      const newY = oldY + 2 * this.speedFactor(); 
+      aStar.style.top = `${newY}px`;
     }
-  
-    renderStars() {
-      for(let i =0; i<this.starsArray.length; i+=1) {
-        let aStar = this.starsArray[i]; 
-        const oldY = parseInt(aStar.style.top);
-        const newY = oldY + 2 * this.speedFactor(); 
-        aStar.style.top = `${newY}px`;
-      }
-      this.framesCounter +=1;
-      // create star every second
-      if (this.framesCounter % 180 ===0){
-        this.starsArray.push(this.createStar());
-      }
+    this.framesCounter +=1;
+    // create star every half second
+    if (this.framesCounter % 90 ===0){
+      this.starsArray.push(this.createStar());
     }
+  }
 
 
 
   removeStars() {
-      const starsToKeep = this.starsArray.filter((star) => parseInt(star.style.top) <= (this.screenHeight - this.basket));
-      const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - this.basket));
+      const starsToKeep = this.starsArray.filter((star) => parseInt(star.style.top) <= (this.screenHeight - Basket.height()));
+      const starsToRemove = this.starsArray.filter((star) => parseInt(star.style.top) > (this.screenHeight - Basket.height()));
       this.starsArray = [...starsToKeep];
       for(let i = 0; i < starsToRemove.length; i++) {
         starsToRemove[i].remove();

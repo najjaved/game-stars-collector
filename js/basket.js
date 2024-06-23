@@ -11,12 +11,16 @@ class Basket {
     this.basketWidth = 200;
     this.basketHeight = 150;
 
-
     this.basketX = 0;
-    this.basketDirectionX = 0;
+    this.basketY = 0;
+    this.basketDirectionX = 0; // initial position, not moving
     this.basketSpeed = 4;
     
   } 
+
+  static height (){
+    return 150;
+  }
 
 
   renderBasket(){
