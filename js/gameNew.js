@@ -3,6 +3,7 @@ const scoreDisplay = document.getElementById('score');
 const livesDisplay = document.getElementById('lives'); 
 const messageDisplay = document.getElementById('end-msg');
 const gifDisplay = document.getElementById('gif');
+const backgroundMusic = document.getElementById('backgound-music');
  
 
 class Game {
@@ -17,8 +18,12 @@ class Game {
     this.starDiameter = 50;
 
     
-    this.score = 0;
-    this.lives = 3;
+    this.lives= 3; // reset lives
+    this.score =0;
+
+    backgroundMusic.muted = false;
+    backgroundMusic.play();
+    backgroundMusic.volume = 0.5;
 
     this.basket = new Basket(this.screenWidth,  this.screenHeight, this.lives);
     this.stars = new Stars(this.gameScreen, this.screenWidth, this.screenHeight, this.score);
@@ -88,12 +93,10 @@ class Game {
   
     const gameOver = (intervalId) => {        
       clearInterval(intervalId);
-      // hide game screen
       this.gameScreen.style.display = 'none'
-      // show final screen with win/lose
       this.endScreen.style.display = 'block'
-      // hide lives on final screen: livesDisplay.style.display = 'none';
-      this.lives= 3; // reset lives
+      finalScore.innerText = this.score;
+      backgroundMusic.muted = true;
 
       // Cleanup DOM:
       this.stars.starsArray.forEach((starObject) => {

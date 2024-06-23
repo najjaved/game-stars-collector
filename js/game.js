@@ -82,7 +82,7 @@ class Game {
       newStar.setAttribute('class', 'star');
       this.gameScreen.appendChild(newStar); 
       newStar.style.left = `${generateX()}px`; 
-      newStar.style.top = `${0}px`; 
+      newStar.style.top = `${this.basketY}px`; 
       this.starsCounter+=1;
 
      return newStar;
