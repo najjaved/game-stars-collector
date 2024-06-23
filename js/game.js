@@ -79,7 +79,7 @@ class Game {
     const createStar = () => {
       const newStar = document.createElement('div');
       newStar.setAttribute('id', 'newStar'+ this.starsCounter);
-      if((Math.round(Math.random()*10) +1) >5){
+      if((Math.round(Math.random()*10) +1) >8){
         newStar.setAttribute('class', 'goldenStar');
         this.golden = true;
       }
