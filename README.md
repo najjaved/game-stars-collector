@@ -181,6 +181,5 @@ Evemt Listeners:
 
 ## Links:
 ### [`Trello`](https://trello.com/b/IJ0mSslm/my-game-project)
-### [`Slides`](https://docs.google.com/presentation/d/1CrUeyLBTDnBFgGiYDTbboXrgNxxXFVIE-n4L15YlWZk/edit#slide=id.g2e72b1bab55_0_14)
 ### [`Github repository`](https://github.com/najjaved/game-stars-collector)
 ### [`Deployment Link`](https://najjaved.github.io/game-stars-collector/)
